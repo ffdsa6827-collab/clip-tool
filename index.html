@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clip Tool - قص الفيديو</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Clip Tool — قص وتنزيل مقاطع الفيديو</h1>
+    <p class="lead">نسخة مجانية ومفتوحة المصدر لقص مقاطع الفيديو مباشرة من المتصفح.</p>
+
+    <section class="card">
+      <label class="button">
+        اختر ملف فيديو
+        <input id="fileInput" type="file" accept="video/*" />
+      </label>
+
+      <div id="fileInfo" class="file-info hidden"></div>
+
+      <div id="playerWrap" class="hidden">
+        <video id="video" controls crossorigin="anonymous"></video>
+
+        <div class="controls">
+          <label>بداية (ث): <input id="start" type="number" min="0" step="0.1" value="0" /></label>
+          <label>نهاية (ث): <input id="end" type="number" min="0" step="0.1" value="5" /></label>
+          <button id="trimBtn" class="primary">قص وتنزيل</button>
+        </div>
+
+        <div id="progress" class="progress hidden">
+          <div id="progressBar" class="progress-bar"></div>
+          <div id="progressText"></div>
+        </div>
+
+        <div id="output" class="output hidden">
+          <a id="downloadLink" href="#" download="clip.mp4">تحميل المقطع</a>
+          <video id="resultVideo" controls></video>
+        </div>
+      </div>
+
+      <div class="note">
+        ملاحظة: هذه الأداة تستخدم ffmpeg.wasm في المتصفح. قد تحتاج اتصال إنترنت لتحميل ملفات المكتبة أول مرّة. لا تنس أن الملفات الكبيرة قد تستغرق وقتاً أو ذاكرة.
+      </div>
+    </section>
+
+    <footer>
+      <small>مصدر مفتوح — يمكنك رفع هذا المشروع على GitHub Pages أو Vercel. لا أقدّم طرق لكسر ميزات مدفوعة في خدمات تجارية.</small>
+    </footer>
+  </main>
+
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.8/dist/ffmpeg.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
